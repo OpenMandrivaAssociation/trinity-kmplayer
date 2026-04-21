@@ -2,11 +2,9 @@
 %bcond xine 1
 
 # TDE variables
-%define tde_epoch 2
 %if "%{?tde_version}" == ""
 %define tde_version 14.1.5
 %endif
-%define pkg_rel 2
 
 %define tde_pkg kmplayer
 %define tde_prefix /opt/trinity
@@ -23,9 +21,8 @@
 
 
 Name:		trinity-%{tde_pkg}
-Epoch:		%{tde_epoch}
 Version:	0.10.0c
-Release:	%{?tde_version}_%{?!preversion:%{pkg_rel}}%{?preversion:0_%{preversion}}%{?dist}
+Release:	%{?tde_version:%{tde_version}_}3
 Summary:	Media player for Trinity
 Group:		Applications/Multimedia
 URL:		http://www.trinitydesktop.org/
@@ -34,7 +31,7 @@ URL:		http://www.trinitydesktop.org/
 License:	GPLv2+
 
 
-Source0:		https://mirror.ppa.trinitydesktop.org/trinity/releases/R%{tde_version}/main/applications/multimedia/%{tarball_name}-%{tde_version}%{?preversion:~%{preversion}}.tar.xz
+Source0:		https://mirror.ppa.trinitydesktop.org/trinity/releases/R%{tde_version}/main/applications/multimedia/%{tarball_name}-%{tde_version}.tar.xz
 
 BuildSystem:    cmake
 
@@ -84,7 +81,7 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 # NSPR support
 BuildRequires:  pkgconfig(nspr)
 
-Requires:		%{name}-base = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name}-base = %{EVRD}
 
 
 %description
@@ -153,7 +150,7 @@ Core files needed for KMPlayer.
 
 %package konq-plugins
 Group:			Applications/Multimedia
-Requires:		%{name}-base = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name}-base = %{EVRD}
 Requires:		trinity-konqueror >= %{tde_version}
 Summary:		KMPlayer plugin for KHTML/Konqueror [Trinity]
 
@@ -175,7 +172,7 @@ browser plugins.
 
 %package doc
 Group:			Applications/Multimedia
-Requires:		%{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name} = %{EVRD}
 Summary:		Handbook for KMPlayer [Trinity]
 
 %description doc
@@ -189,7 +186,7 @@ Documention for KMPlayer, a basic audio/video viewer application for TDE.
 
 %package devel
 Group:			Applications/Multimedia
-Requires:		%{name} = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires:		%{name} = %{EVRD}
 Summary:		Media player for Trinity (devlopment files)
 
 %description devel
