@@ -46,7 +46,7 @@ BuildOption:    -DWITH_GCC_VISIBILITY=%{!?with_clang:ON}%{?with_clang:OFF}
 BuildRequires:	trinity-tdelibs-devel >= %{tde_version}
 BuildRequires:	trinity-tdebase-devel >= %{tde_version}
 # Koffice support
-BuildRequires:	trinity-koffice-devel >= %{tde_version}
+BuildRequires:	trinity-koffice-devel
 
 BuildRequires:	desktop-file-utils
 
