@@ -58,7 +58,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	libtool
 
 # DBUS support
-BuildRequires:	trinity-dbus-tqt-devel >= %{tde_version}
+BuildRequires:	pkgconfig(dbus-tqt)
 
 
 # GSTREAMER support
